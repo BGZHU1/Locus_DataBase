@@ -21,7 +21,7 @@ USE `mydb` ;
 DROP TABLE IF EXISTS `mydb`.`PassWord` ;
 
 CREATE TABLE IF NOT EXISTS `mydb`.`PassWord` (
-  `idPassWord` INT NOT NULL,
+  `idPassWord` INT NOT NULL AUTO_INCREMENT,
   `UserName` VARCHAR(200) NOT NULL,
   `PassWord` VARCHAR(200) NULL,
   PRIMARY KEY (`idPassWord`))
@@ -34,12 +34,12 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `mydb`.`UserProfile` ;
 
 CREATE TABLE IF NOT EXISTS `mydb`.`UserProfile` (
-  `idUserProfile` INT NOT NULL,
+  `idUserProfile` INT NOT NULL AUTO_INCREMENT,
   `FirstName` VARCHAR(45) NULL,
   `LastName` VARCHAR(45) NULL,
   `MiddleName` VARCHAR(45) NULL,
   `PassWord_idPassWord` INT NOT NULL,
-  PRIMARY KEY (`idUserProfile`, `PassWord_idPassWord`),
+  PRIMARY KEY (`idUserProfile`),
   INDEX `fk_UserProfile_PassWord_idx` (`PassWord_idPassWord` ASC),
   CONSTRAINT `fk_UserProfile_PassWord`
     FOREIGN KEY (`PassWord_idPassWord`)
@@ -55,7 +55,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `mydb`.`Location` ;
 
 CREATE TABLE IF NOT EXISTS `mydb`.`Location` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `Latitude` FLOAT NULL,
   `Longtitude` FLOAT NULL,
   `UserProfile_idUserProfile` INT NOT NULL,
